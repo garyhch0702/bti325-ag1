@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-// Global arrays
+// Global arrays to hold posts and categories
 let posts = [];
 let categories = [];
 
@@ -44,7 +44,7 @@ function getPublishedPosts() {
     if (publishedPosts.length > 0) {
       resolve(publishedPosts);
     } else {
-      reject('No results returned');
+      reject('No published posts found');
     }
   });
 }
@@ -55,7 +55,7 @@ function getCategories() {
     if (categories.length > 0) {
       resolve(categories);
     } else {
-      reject('No results returned');
+      reject('No categories found');
     }
   });
 }
