@@ -4,6 +4,7 @@ const path = require('path');
 let posts = [];
 let categories = [];
 
+// Initialize function to read the JSON files
 function initialize() {
   return new Promise((resolve, reject) => {
     try {
@@ -16,6 +17,7 @@ function initialize() {
   });
 }
 
+// Function to get all posts
 function getAllPosts() {
   return new Promise((resolve, reject) => {
     if (posts.length > 0) {
@@ -26,6 +28,19 @@ function getAllPosts() {
   });
 }
 
+// Function to get published posts
+function getPublishedPosts() {
+  return new Promise((resolve, reject) => {
+    const publishedPosts = posts.filter(post => post.published === true);
+    if (publishedPosts.length > 0) {
+      resolve(publishedPosts);
+    } else {
+      reject('No published posts found');
+    }
+  });
+}
+
+// Function to get all categories
 function getCategories() {
   return new Promise((resolve, reject) => {
     if (categories.length > 0) {
@@ -36,8 +51,10 @@ function getCategories() {
   });
 }
 
+// Export the functions
 module.exports = {
   initialize,
   getAllPosts,
+  getPublishedPosts,  // Ensure this is exported
   getCategories
 };
