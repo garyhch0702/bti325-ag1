@@ -6,7 +6,7 @@
 *
 * Name: Chenghao Hu Student ID: 149773228 Date: [2024/10/10]
 *
-* Online (Vercel) URL: https://bti325-ag2-qdenm0u41-garyhus-projects.vercel.app/
+* Online (Vercel) URL: bti325-ag2-lagurvdyi-garyhus-projects.vercel.app
 ********************************************************************************/
 
 const express = require('express');
@@ -54,13 +54,18 @@ app.use((req, res) => {
   res.status(404).send("Page Not Found");
 });
 
-// Initialize blog-service and start the server
-blogService.initialize()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Express http server listening on port ${PORT}`);
+// Export the app for serverless deployment
+module.exports = app;
+
+// Initialize blog-service and start the server (only locally)
+if (!process.env.VERCEL) {
+  blogService.initialize()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Express http server listening on port ${PORT}`);
+      });
+    })
+    .catch(err => {
+      console.log(`Failed to initialize blog service: ${err}`);
     });
-  })
-  .catch(err => {
-    console.log(`Failed to initialize blog service: ${err}`);
-  });
+}
