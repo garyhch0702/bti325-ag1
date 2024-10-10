@@ -6,7 +6,7 @@
 *
 * Name: Chenghao Hu Student ID: 149773228 Date: [2024/10/10]
 *
-* Online (Vercel) URL: [https://bti325-ag2.vercel.app/]
+* Online (Vercel) URL: https://bti325-ag2.vercel.app/
 ********************************************************************************/
 
 const express = require('express');
@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Serve static files from 'public' folder
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Redirect root to /about
 app.get('/', (req, res) => {

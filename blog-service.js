@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 // Global arrays to hold posts and categories
 let posts = [];
@@ -7,13 +8,13 @@ let categories = [];
 // Initialize function to read the JSON files
 function initialize() {
   return new Promise((resolve, reject) => {
-    fs.readFile('./data/posts.json', 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname, 'data', 'posts.json'), 'utf8', (err, data) => {
       if (err) {
         reject('Unable to read posts file');
       } else {
         posts = JSON.parse(data);
 
-        fs.readFile('./data/categories.json', 'utf8', (err, data) => {
+        fs.readFile(path.join(__dirname, 'data', 'categories.json'), 'utf8', (err, data) => {
           if (err) {
             reject('Unable to read categories file');
           } else {
