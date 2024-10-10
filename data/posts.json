@@ -1,0 +1,15 @@
+[
+    {
+      "id": 1,
+      "title": "My First Blog Post",
+      "published": true,
+      "body": "This is my first blog post. I'm excited to share more in the future!"
+    },
+    {
+      "id": 2,
+      "title": "Learning Web Development",
+      "published": true,
+      "body": "Web development is an exciting journey, and I'm eager to learn more."
+    }
+  ]
+  
